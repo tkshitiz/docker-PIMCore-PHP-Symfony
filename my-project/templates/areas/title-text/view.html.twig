@@ -1,0 +1,21 @@
+<div class="profile-container">
+  <h1 class="title">{{ pimcore_input("title", {'placeholder': 'enter title'}) }}
+<span class="dot">.</span></h1>
+  <p class="description">
+  {{ pimcore_wysiwyg("gallery", {
+    "height": 200,
+    "width": 500,
+    "class": "gallerypage-wysiwyg-center-text",
+    "placeholder": "Enter you description"
+})  }}
+
+  </p>
+
+  <div class="tags">
+    <span class="tag">{{ pimcore_input("tags", {'placeholder': 'enter tags'}) }}</span>
+    <span class="tag">USA</span>
+    <span class="tag">Winter</span>
+    <span class="tag">Netherlands</span>
+    <span class="tag">Models</span>
+  </div>
+</div>

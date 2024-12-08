@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                be6a185f-dc7c-4004-b732-9fa0688c3e2c:
+                    name: blogposts
+                    description: ''
+                    key: blogposts
+                    type: document
+                    data: ''
+                    config: ''
+                    ctype: document
+                    inheritable: false
+                    creationDate: 1719489230
+                    modificationDate: 1719489266

@@ -1,0 +1,26 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    post-images:
+                        items:
+                            -
+                                method: resize
+                                arguments:
+                                    width: 1300
+                                    height: 800
+                        medias: {  }
+                        name: post-images
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1729002674
+                        creationDate: 1729000336
+                        preserveAnimation: false

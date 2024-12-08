@@ -1,0 +1,41 @@
+
+<div class="container mt-5" >
+ {% if assets is defined %}
+	  <div class="row">
+         <div class="gallery">
+		        {% for asset in assets %}
+			        {% if asset is instanceof('\\Pimcore\\Model\\Asset\\Image') %}
+				         <div class="gallery-item">
+                    {{ asset.getThumbnail("gallery").getHTML()|raw }}
+                           <div class="description">                   
+                              {% if asset.metadata[0]["data"] is defined %}
+                                <p>{{ asset.metadata[0]["data"] }}</p>
+                              {% endif %}
+                           </div>
+			          	</div> 
+		        	{% endif %}
+		        {% endfor %} 
+	      </div>
+    </div>
+ {% endif %}
+
+ {% if filesOfLocationFolder is defined %}
+	  <div class="row">
+         <div class="gallery"> 
+		        {% for files in filesOfLocationFolder %}
+             {% if files.id %}
+			        {% if files is instanceof('\\Pimcore\\Model\\Asset\\Image') %}
+				         <div class="gallery-item">
+                    {{ files.getThumbnail("location_galleries").getHTML()|raw }}
+			          	</div>
+		        	{% endif %}
+               {% endif %}
+		        {% endfor %} 
+	      </div>
+    </div>
+ {% endif %}
+</div>
+{# end of container section #}
+<div class="col text-center">
+    <button class="btn btn-outline-primary border border-black text-black py-2 px-4 rounded hover:bg-black hover:text-white transition-colors">Load More</button>
+</div>

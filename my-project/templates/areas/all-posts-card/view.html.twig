@@ -1,0 +1,30 @@
+<section class="artical_area mt_60">
+		 <div class="container">
+			<div class="row justify-content-between">
+				<div class="col-xl-12 col-lg-4 margin_right">
+				<h1 class="text-center">All Posts</h1>
+					<div class="row">
+						{% set block = pimcore_block('home_blog', {'manual' : true,'class':'row'}).start() %}
+						{% for i in block.iterator %}
+							<div class="col-xl-4 col-md-4 wow fadeInUp" data-wow-duration="1s">
+								{% do block.blockConstruct() %}
+								{% do block.blockStart() %}
+								{{ pimcore_renderlet("home_blog",{
+								"controller" : "App\\Controller\\ContentController::blogCardAction",
+									"title" : "Drag an blog document",
+									"height" : 600
+									}) }}
+								{% do block.blockEnd() %}
+								{% do block.blockDestruct() %}
+							</div>
+						{% endfor %}
+						{% do block.end() %}
+						<div class="ms-4 text-center">
+							<a class="common_btn" href="/blog-list">Load More	
+							</a>
+						</div>
+					</div>
+				</div>			
+			</div>
+		</div>
+	</section>

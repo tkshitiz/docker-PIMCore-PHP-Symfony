@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+	{{ pimcore_areablock('mypassion', {
+        'allowed': ['my-passion']
+    }) }}
+    
+  <div class="text-center mt-5">
+     <h1>{{pimcore_input('text')}}</h1>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <img src="https://via.placeholder.com/1200x600" alt="Image" class="post-image">
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="post-title">Frank Mollers &nbsp; | APR 06, 2020</div>
+            <div class="post-content">
+                <p>If I could not make a living with my IT knowledge, I would for sure be a full-time photographer. But it is hard to make a living with that. As I am very busy with my work and I try to do everything I do with 200%, I love to make pictures. If you want to make a good photo, you have to concentrate completely and you have to focus on your composition and to capture the action. As my normal work is very intensive, photography is a very good way to relax. For me it is a way to get my head empty and focus on other things. That does not mean that I just take pictures. No, also with photography I try to do it for 200%. It is a different kind of focus, but still a complete focus. As I have my own company and I travel quite a lot, I have the opportunity to combine it. I try to combine my IT skills with my photography and my photography skills to get a better image of the work I am doing. Confusing? No, just combining the things I really like.</p>
+            </div>
+        </div>
+    </div>
+
+        <div class="row mt-4">
+        <div class="col-12">
+            <img src="https://via.placeholder.com/1200x600" alt="Main Image" class="main-image">
+        </div>
+    </div>
+    <div class="row image-gallery mt-4">
+        <div class="col-md-4 col-sm-12 mb-4">
+            <img src="https://via.placeholder.com/400x300" alt="Thumbnail 1" class="thumbnail">
+        </div>
+        <div class="col-md-4 col-sm-12 mb-4">
+            <img src="https://via.placeholder.com/400x300" alt="Thumbnail 2" class="thumbnail">
+        </div>
+        <div class="col-md-4 col-sm-12 mb-4">
+            <img src="https://via.placeholder.com/400x300" alt="Thumbnail 3" class="thumbnail">
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+

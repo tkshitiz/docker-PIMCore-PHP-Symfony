@@ -1,0 +1,31 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    homepage_gallery:
+                        items:
+                            -
+                                method: resize
+                                arguments:
+                                    width: 600
+                                    height: 600
+                            -
+                                method: scaleByHeight
+                                arguments:
+                                    height: 800
+                                    forceResize: false
+                        medias: {  }
+                        name: homepage_gallery
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1721824186
+                        creationDate: 1721823963
+                        preserveAnimation: false

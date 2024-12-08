@@ -1,0 +1,130 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+<!-- Only applying text-center to this section, not the entire container -->
+<div class="container-fluid pt-3 text-center">
+
+  <h1 class=""> {{ pimcore_input("myHeadline",{
+    required: true,
+    "placeholder" : "Enter the headline"
+    }) }}
+  </h1>
+
+  <!-- Description section centered -->
+  <p style="padding:20px 300px;">{{pimcore_textarea("description",{
+     "placeholder":"Enter description",
+           "nl2br": true
+  })}}</p>
+		{% if editmode %}
+						<div class="details_blooger">
+							<div class="details_blooger_img">
+								{{ pimcore_image('blog_banner',{
+											"height":"300",
+                      "required": true,
+                      "placeholder" : " Place blog_banner image"
+										}) }}
+                   {{dump("hello")}}
+							</div>
+							<div class="details_blooger_text">
+								<p>
+									{{ pimcore_textarea('brief_info',{
+											"height":"200",
+                      "required": true,
+                      "placeholder" : "Enter the  brief info"
+										}) }}
+								</p>
+							</div>
+						</div>
+            </div>
+      
+					{% endif %}
+         
+         
+  <!-- Image section centered -->
+  {{ pimcore_image("post-images", {
+      "title": "Drag your image here",
+      "width": 300,
+      "height": 200,
+      "thumbnail": "post-images",
+      "required": true
+  }) }} 
+    <p class="text-center" style="margin:10px;">{{pimcore_image("post-images").getAlt()}}</p>
+
+</div>
+
+
+<!-- Non-centered section starts here -->
+<div class="container-fluid pt-3">
+  <!-- Main Content Section -->
+  <div style="padding:20px 300px;" class="content mt-4">
+    <p class="font-weight-light" style="line-height: 1.8;">
+  {{ pimcore_wysiwyg("posts", {
+    "height": 600,
+    "width": 800,
+    "class": "gallerypage-wysiwyg-center-text",
+    "placeholder": "Enter your description",
+})  }}
+    </p>
+<ul class="post_author_date">
+    <li class="author-name"> 
+        {{ pimcore_input('author', {width:100, required:true}) }}
+    </li>
+    <li class="separator">|</li>
+    <li class="post-date">
+     {% if editmode %}
+            Date:
+            {{ pimcore_date('post_date', {
+                'format': 'M d, Y',
+                'required' : true
+            }) }}
+        {% else %}
+            {% set post_date = pimcore_date('post_date').date %}
+            {% if post_date %}
+                {{ post_date|date('M d, Y') }} 
+            {% else %}
+                {{ document.creationDate|date('M d, Y') }}  <!-- Fallback to creation date with month first -->
+            {% endif %}
+        {% endif %}
+    </li>
+</ul>
+
+    <!-- Subheading -->
+    <h2 class="mt-5 font-weight-bold">We were in the last 9 years</h2>
+    
+    <p class="font-weight-light" style="line-height: 1.8;">
+      Luckily, we were in the last 9 years always to find a good mix between very talented people and experienced people. And those experienced people came a lot of times back from abroad or foreigners who happened to stay in Nepal for whatever reason...
+    </p>
+    {{ pimcore_image("post-images1", {
+      "title": "Drag your image here",
+      "width": 300,
+      "height": 200,
+      "thumbnail": "post-images",
+      "required" :true
+  }) }} 
+  </div>
+
+
+
+  <!-- Tags and Profile Section -->
+  <div class="container">
+    <div class="tags">
+      <a href="#">Nepal</a>
+      <a href="#">Photography</a>
+    </div>
+    <hr>
+    <div class="profile">
+      <!-- Adding img-fluid and rounded-circle to make the profile image circular and responsive -->
+      <div class="rounded-circle img-fluid" style="max-width:150px;">
+        {{ pimcore_image("round-image",{required: true}) }} 
+      </div>
+      <div class="profile-info">
+        <h5>{{pimcore_input("profile-name",{required: true})}}</h5>
+         <p>{{pimcore_textarea("profile-description",{
+           "placeholder":"Enter Profile description",
+           "nl2br": true
+         })}}</p>
+        {# <p>Working for @JavraSoftware Netherlands/Nepal/Portugal and Photography as my passion, traveling a hobby.</p> #}
+      </div>
+    </div>
+  </div>
+{% endblock %}

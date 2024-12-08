@@ -1,0 +1,17 @@
+<div class="container" {{ editmode?'style="min-height:200px;"': 'style="margin-bottom:5px;"' }}>
+	{% set rows =info.getDocumentElement('rows').getData() is same as ""?1:info.getDocumentElement('rows').getData() %}
+	{% set columns =info.getDocumentElement('columns').getData() is same as ""?1:info.getDocumentElement('columns').getData() %}
+	{%  for rowCount in range(1,rows) %}
+		<div class="row" {{ editmode? 'style="border: 1px red dotted; min-height: 400px;"' }}>
+			{% for columnCount in range(1, columns) %}
+				{% set columnBootstrapName = 12//(columns) %}
+				{% set smallColumnBootstrapName = columnBootstrapName*2 %}
+				<div class="col-md-{{ columnBootstrapName }} col-lg-{{ columnBootstrapName }} col-sm-{{ smallColumnBootstrapName }} col-{{ columnBootstrapName }}" {{ editmode? 'style="border: 1px green dotted; min-height:400px;"' }} style="padding:0px 5px 5px 0px;">
+					{{pimcore_areablock('column_areablock'~columnCount~rowCount,{
+						"allowed":["grid", "image","w-y-s-i-w-y-g","video"]
+					})}}
+				</div>
+			{% endfor %}
+		</div>
+	{% endfor %}
+</div>

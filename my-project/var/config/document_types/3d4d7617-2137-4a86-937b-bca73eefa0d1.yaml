@@ -1,0 +1,14 @@
+pimcore:
+    documents:
+        doc_types:
+            definitions:
+                3d4d7617-2137-4a86-937b-bca73eefa0d1:
+                    name: 'Portal Engine - Content Page'
+                    group: 'Portal Engine'
+                    controller: 'Pimcore\Bundle\PortalEngineBundle\Controller\PortalController::contentAction'
+                    template: null
+                    type: page
+                    priority: 0
+                    creationDate: 1715683016
+                    modificationDate: 1715683016
+                    staticGeneratorEnabled: false

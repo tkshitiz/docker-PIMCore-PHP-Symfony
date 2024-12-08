@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div>
+    {{ pimcore_areablock('title-text', {'allowed': ['title-text']}) }}
+</div>
+<div id='content'>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="gallery">
+                {% set displayedAssets = [] %}
+                {% for folder in folders %}
+                    {% set images = folder.getChildren() %}
+                    {% for image in images %}
+                        {% if image is instanceof('\\Pimcore\\Model\\Asset\\Image') %}                       
+                            {% if loop.first %}
+                                {% set displayedAssets = displayedAssets|merge([image]) %}
+                                <div class="gallery-item" data-asset="{{ image.id }}" parent-id="{{ image.parentId }}" folder-name ="{{ image.getParent.filename }}">
+                                   <a href="{{ path('gallery_album', { 'id': image.parentId }) }}"> {{ image.getThumbnail("gallery").getHTML()|raw }}   
+                                    <div class="description">
+                                        {% set parentFolder = image.getParent() %}
+                                        {% if parentFolder %}
+                                            <p>Folder Name: {{ parentFolder.getFilename() }}</p>
+                                        {% endif %}
+                                        {% if image.metadata[0]["data"] is defined %}
+                                            <p>{{ image.metadata[0]["data"] }}</p>
+                                        {% endif %}
+                                    </div>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="col text-center">
+            <button class="btn btn-outline-primary border border-black text-black py-2 px-4 rounded hover:bg-black hover:text-white transition-colors">Load More</button>
+        </div> 
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{{pimcore_head_style()}}
+<style>
+	.parent {
+		display: grid;
+		grid-template-columns: 75% 25%;
+		grid-gap: 2em;
+		width: 100%;
+
+	}
+	.child {
+		object-fit: contain;
+	}
+</style>
+
+<div class="container">
+
+	{% if assets %}
+		<div class="row">
+			<div class="col-sm-8">
+				{% for asset in assets|slice(0,2) %}
+					{% if asset is instanceof('\\Pimcore\\Model\\Asset\\Image') and loop.index == 1  %}
+						{{ asset.thumbnail('homepage_gallery').html({"imgAttributes" : {"class" : "home-gallery"}})|raw }}
+					{% endif %}
+					{% if asset is instanceof('\\Pimcore\\Model\\Asset\\Image') and loop.index == 2  %}
+						{{ asset.thumbnail('homepage_gallery').html({"imgAttributes" : {"class" : "home-gallery-second-image"}})|raw }}
+					{% endif %}
+				{% endfor %}
+			</div>
+
+			<div class="col-sm-4">
+				{% for asset in assets|slice(2,3) %}
+					{% if asset is instanceof('\\Pimcore\\Model\\Asset\\Image') and loop.index == 1  %}
+						{{ asset.thumbnail('homepage_gallery').html({"imgAttributes" : {"class" : "home-gallery-third-image"}})|raw }}
+					{% endif %}
+					{% if asset is instanceof('\\Pimcore\\Model\\Asset\\Image') and loop.index == 2  %}
+						{{ asset.thumbnail('homepage_gallery').html({"imgAttributes" : {"class" : "home-gallery-fourth-image"}})|raw }}
+					{% endif %}
+				{% endfor %}
+			</div>
+
+		</div>
+
+	{% endif %}
+</div>

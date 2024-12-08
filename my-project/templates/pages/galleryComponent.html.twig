@@ -1,0 +1,47 @@
+
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div id='content'>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="gallery">
+                {# Iterate over the paginated items #}
+                {% for folder in pagination.items %}
+                    {% set images = folder.getChildren() %}
+                    {# Filter the images and count them #}
+                    {% set imageCount = 0 %}
+                    {% for image in images %}
+                        {% if image is instanceof('\\Pimcore\\Model\\Asset\\Image') %}
+                            {% set imageCount = imageCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {# If there are images, display the first one with a link #}
+                    {% if imageCount > 0 %}
+                        <div class="gallery-item" parent-id="{{ folder.id }}" folder-name="{{ folder.getFilename() }}">
+                            <a href="{{ path('gallery_album', { 'id': folder.id }) }}">
+                                {# Display the first image in the folder #}
+                                {% set filteredImages = images|filter(image => image is instanceof('\\Pimcore\\Model\\Asset\\Image')) %}
+
+                                {% if filteredImages|length > 0 %}
+                                    {{ filteredImages|first.getThumbnail("gallery").getHTML()|raw }}
+                                {% endif %}
+                                <div class="description">
+                                    <h3 style="float:left;text-decoration:none !important;">{{ folder.getFilename() }}</h3>
+                                    <h3 style="float:right;">{{ imageCount }} photos</h3>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        {# Render the pagination controls #}
+        <div class="pagination justify-content-center mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

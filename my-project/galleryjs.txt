@@ -1,0 +1,63 @@
+<script>
+const images = document.querySelectorAll('.gallery-item');
+
+const modalImg = document.getElementById('img01');
+const captionText = document.getElementById('caption');
+const closeModal = document.querySelector('.close');
+
+// Function to close the modal
+
+
+// Add click event listeners to each image in the gallery
+images.forEach((image) => {
+    image.addEventListener('click', () => {
+        // Hide all other gallery items
+        images.forEach((otherImage) => { 
+            if (otherImage !== image) {
+                otherImage.style.display = 'none';
+            }
+        });
+
+        // Make the clicked content stand out
+        image.style.display = 'block';
+
+        // Extract the asset ID and parent ID
+        const assetId = image.getAttribute('data-asset');
+        const parentId = image.getAttribute('parent-id');
+        const filename = image.getAttribute('data-filename')
+        
+        const folderName = image.getAttribute('folder-name')
+ 
+        // Fetch content via AJAX and show it inside the #content div
+        fetch('{{ path('gallery_page_collection') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                parentFolderName : folderName,
+                assetId: assetId,
+                parentId: parentId
+            })
+        }).then(response => response.json())
+        .then(data => {
+            
+            if (data.html) {
+                document.getElementById('content').innerHTML = data.html;
+                // Add event listeners to new images within the fetched content
+                const singleImageClicked = document.querySelectorAll('.gallery-item img');  
+                singleImageClicked.forEach((img) => {
+                    img.addEventListener('click', () => {
+                        captionText.innerHTML = filename || 'Image'; 
+                    });
+                });
+            } else {
+                console.error('Unexpected response format.');
+            }
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+    });
+});
+</script>

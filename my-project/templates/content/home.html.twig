@@ -1,0 +1,51 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="mt-5">
+	{{ pimcore_areablock('content', {
+        'allowed': ['title-text']
+    }) }}
+</div>
+	<section id="renderlet-gallery">
+		{{
+        pimcore_renderlet('myGallery', {
+            "controller" : "App\\Controller\\ContentController::DragAndDropGalleryAction",
+            "title" : "Drag an asset folder here to get a gallery",
+            "height" : 300
+        })
+    }}
+	</section>
+	<div class="text-center"style="margin:0px">
+		<h1>Latest Posts</h1>
+	</div>
+
+	{{ pimcore_areablock('latest-post', {
+        'allowed': ['latest-post']
+    }) }}
+
+	<div class="bg-zinc-100 dark:bg-zinc-900 py-12 px-4">
+		<div class="max-w-4xl mx-auto text-center">
+			<p class="text-2xl md:text-3xl font-serif italic text-orange-600 dark:text-orange-400 mb-6">
+				“While there's a wind and the stars and the rainbow, till the mountains crumble into the plain, oh yes, we’ll keep on trying.”
+			</p>
+			<p class="text-lg md:text-xl font-serif text-orange-600 dark:text-orange-400">
+				— Innuendo By Queen
+			</p>
+		</div>
+		<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+			<img src="https://placehold.co/400x300" alt="Image 1" class="w-full h-auto object-cover"/>
+			<img src="https://placehold.co/400x300" alt="Image 2" class="w-full h-auto object-cover"/>
+			<img src="https://placehold.co/400x300" alt="Image 3" class="w-full h-auto object-cover"/>
+		</div>
+	</div><br>
+	{# <div class="all-posts">
+		<h1>All Posts</h1>
+	</div> #}
+
+	 <div class="container">
+        	{{ pimcore_areablock('all-posts-card', {
+        'allowed': ['all-posts-card']
+   		 }) }} 
+    </div>
+
+		{% endblock %}

@@ -1,0 +1,28 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    blog_card_image:
+                        items:
+                            -
+                                method: cover
+                                arguments:
+                                    width: 400
+                                    height: 400
+                                    positioning: center
+                                    forceResize: true
+                        medias: {  }
+                        name: blog_card_image
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1729246940
+                        creationDate: 1729246800
+                        preserveAnimation: false

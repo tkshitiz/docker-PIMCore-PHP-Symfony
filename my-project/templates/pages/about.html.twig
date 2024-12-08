@@ -1,0 +1,105 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+	<div style="background-color:#f3fcfb">
+		<div class="container py-2 py-lg-5">
+		
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 my-2 my-lg-4 desktop-content-container">
+                {{pimcore_areablock('about-us-image',{
+								'allowed':['image']
+							})}}
+					{# <img src="https://images.unsplash.com/photo-1718511609335-a261357388a1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8" alt="image"> #}
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 my-2 my-lg-4 responsive-img img-cover">
+                <div class="blog_details_text">
+						<h2>
+							{{ pimcore_input('heading') }}
+						</h2>
+						{{pimcore_areablock('aboutus-grid',{
+								'allowed':['grid','w-y-s-i-w-y-g']
+							})}}
+
+					</div>
+					<div class="w-100">
+						{# <picture>
+
+							<h1 class="text-4xl font-bold text-foreground mb-2">I am Frank Mollers
+								<span class="text-primary">.</span>
+							</h1>
+							<p class="text-lg font-semibold text-muted-foreground mb-4">You have seen my name already in the title. I am Frank Mollers, I was born and raised in the Netherlands where is am still living.</p>
+							<p class="text-muted-foreground mb-4">
+								When I was 27 I decided to start my own business and as I already worked in the software industry it was an easy choice to go that direction. Now, 22 years later and a lot of changes in my life,
+																																							   Javra Software, is located in the Netherlands with also offices in Kathmandu, Nepal and Chengdu, China. Because of this I have the possibility to travel a lot and as my passion is photography I
+																																							  am trying to combine that a little bit.
+							</p>
+							<p class="text-muted-foreground mb-4">Well, that is enough information for now I guess.</p>
+							<p class="text-muted-foreground">Thanks for dropping by.</p>
+							<p class="text-foreground font-bold mt-2">Frank<span class="text-primary">.</span>
+							</p>
+						</picture> #}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+
+<h2 class="text-center mt-5">Gallery</h2><br>
+  
+<div id='content'>
+    <div class="container mt-5">
+
+        <div class="row">
+            <div class="gallery">
+                {# Iterate over the paginated items #}
+                {% for folder in pagination.items %}
+                    {% set images = folder.getChildren() %}
+                    {# Filter the images and count them #}
+                    {% set imageCount = 0 %}
+                    {% for image in images %}
+                        {% if image is instanceof('\\Pimcore\\Model\\Asset\\Image') %}
+                            {% set imageCount = imageCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {# If there are images, display the first one with a link #}
+                    {% if imageCount > 0 %}
+                        <div class="gallery-item" parent-id="{{ folder.id }}" folder-name="{{ folder.getFilename() }}">
+                            <a href="{{ path('gallery_album', { 'id': folder.id }) }}">
+                                {# Display the first image in the folder #}
+                                {% set filteredImages = images|filter(image => image is instanceof('\\Pimcore\\Model\\Asset\\Image')) %}
+
+                                {% if filteredImages|length > 0 %}
+                                    {{ filteredImages|first.getThumbnail("gallery").getHTML()|raw }}
+                                {% endif %}
+                                <div class="description">
+                                    <h3 style="float:left;text-decoration:none !important;">{{ folder.getFilename() }}</h3>
+                                    <h3 style="float:right;">{{ imageCount }} photos</h3>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        {# Render the pagination controls #}
+        <div class="pagination justify-content-center mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+         <div>
+           	{{ pimcore_areablock('all-posts-card', {
+        'allowed': ['all-posts-card']
+   		 }) }} 
+         </div>
+    </div>
+</div>
+
+</div>
+
+
+
+{% endblock %}

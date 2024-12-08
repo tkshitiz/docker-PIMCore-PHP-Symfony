@@ -1,0 +1,22 @@
+_pimcore_dev:
+    resource: "@PimcoreCoreBundle/config/routing_dev.yaml"
+# gallery_page:
+#     path: /gallery
+#     # the controller value has the format 'controller_class::method_name'
+#     controller: App\Controller\ContentController::mytestAction
+
+
+gallery_page_collection:
+   path: /collection
+    # the controller value has the format 'controller_class::method_name'
+   controller: App\Controller\ContentOpenController::mytestAction 
+
+blog_list_page:
+   path: /blog-list
+    # the controller value has the format 'controller_class::method_name'
+   controller: App\Controller\ContentController::blogListAction    
+
+# blog_header_nav:
+#    path: /blog_header_nav
+#    controller: App\Controller\ContentController::blogAction   
+

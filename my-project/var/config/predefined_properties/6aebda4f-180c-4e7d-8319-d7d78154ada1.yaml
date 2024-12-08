@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                6aebda4f-180c-4e7d-8319-d7d78154ada1:
+                    name: gallery_page
+                    description: ''
+                    key: gallery_page
+                    type: document
+                    data: ''
+                    config: ''
+                    ctype: document
+                    inheritable: false
+                    creationDate: 1727432789
+                    modificationDate: 1727432865

@@ -1,0 +1,38 @@
+	{# <div class="max-w-4xl mx-auto p-4"> #}
+	<div class="text-center">
+	  {{ pimcore_image("post-images", {
+      "title": "Drag your image here",
+      "width": 300,
+      "height": 200,
+      "thumbnail": "post-images",
+      "required": true,
+	  
+  }) }} 
+	</div>
+
+		{# <img src="https://placehold.co/1200x600" alt="Nepal" class="w-full h-auto rounded-lg shadow-md"/> #}
+		    
+
+		<div class="text-center mt-6">
+
+		  <h1 class="text-2xl md:text-4xl font-semibold">
+				<a href="/blog-posts/posts" style="font-weight:bold;color:black">
+				<h1>{{ pimcore_input("myHeadline",{
+						required: true,
+						"placeholder" : "Enter the headline"
+					}) }}
+				</h1>
+			 </a>
+			</h1>
+            
+			<p class="mt-4 text-zinc-600">
+				{{ pimcore_textarea('blog_image_description',{
+											"height":"200",
+                      "required": true,
+                      "placeholder" : "Enter the description"
+					}) }}
+				
+			</p>
+		</div>
+	
+	{# </div> #}

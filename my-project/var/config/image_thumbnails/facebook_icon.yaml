@@ -1,0 +1,21 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    facebook_icon:
+                        items: {  }
+                        medias: {  }
+                        name: facebook_icon
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1719398704
+                        creationDate: 1719393765
+                        preserveAnimation: false

@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                556262fb-75d4-4c28-991d-d4e3841a1514:
+                    name: latest-post
+                    description: ''
+                    key: latest_post
+                    type: document
+                    data: ''
+                    config: ''
+                    ctype: document
+                    inheritable: false
+                    creationDate: 1720683097
+                    modificationDate: 1720683118

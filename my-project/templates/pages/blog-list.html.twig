@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-xl-12 col-lg-4 margin_right">
+			
+					<div class="col-12 text-center wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+						{% if blogs|length == 0 %}
+							<div class="col-12 text-center wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+								<h2 class="heading">BLOGS NOT FOUND!</h2>
+							</div>
+						{% else %}
+							<h2	>BLOGS</h2>
+						{% endif %}
+					</div>
+					<div class="row">
+
+						{% for blog in blogs %}
+                     
+							<div class="col-xl-4 col-md-4 wow fadeInUp" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
+								<div class="single_article">
+									<a href="{{ blog.getUrl }}" class="single_article_img">
+										<img src="{{ blog.editables.blog_banner.getThumbnail('blog_card_image') }}" alt="" loading="lazy" class="img-fluid w-100">
+									</a>
+                                    
+									<div class="single_article_text">
+										<ul class="post-details-inline">
+											<li>
+												{% if blog.editables.author.text is defined %}
+                                                    {{ blog.editables.author.text }}
+                                                {% endif %}
+											</li>
+                                             <li class="separator">|</li> 
+											<li>
+                                            {% if blog.editables.post_date.date is defined and blog.editables.post_date.date is not same as null %}
+                                                {{ blog.editables.post_date.date|date('M d, Y') }} 
+                                            {% else %}
+                                                {{ blog.creationDate|date('M d, Y') }} 
+                                            {% endif %}
+											</li>
+										</ul>
+										<a class="heading" href="{{ blog.getUrl }}">
+											{{ blog.editables.myHeadline.text }}
+										</a>
+										<p class="description">
+											{% if blog.editables.brief_info.text is defined %}
+												{{ blog.editables.brief_info.text }}
+											{% endif %}
+										</p>
+											<a class="view-details" href="{{ blog.getUrl }}">
+												view details
+											</a> 
+									</div>
+								</div>
+
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				{# <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInRight" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeInRight;">
+				</div> #}
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

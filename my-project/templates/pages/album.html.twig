@@ -1,0 +1,79 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+{# {% if isGallery %} #}
+
+<div class="profile-container">
+  <h1 class="title">{{ pimcore_input("title", {'placeholder': 'enter title'}) }}
+    <span class="dot">.</span>
+  </h1>
+  <p class="description">
+    {{ pimcore_wysiwyg("gallery", {
+      "height": 200,
+      "width": 500,
+      "class": "gallerypage-wysiwyg-center-text",
+      "placeholder": "Enter you description"
+    }) }}
+  </p>
+
+  <div class="tags">
+    <span class="tag">{{ pimcore_input("tags", {'placeholder': 'enter tags'}) }}</span>
+    <span class="tag">USA</span>
+    <span class="tag">Winter</span>
+    <span class="tag">Netherlands</span>
+    <span class="tag">Models</span>
+  </div>
+</div>
+
+{# {% else %} #}
+<div class="container mt-5">
+  {% if pagination.items is defined and pagination.items|length > 0 %}
+    <i class="fa fa-angle-left" style="font-size:48px;color:red;cursor:pointer;"></i>
+    <i class="fa fa-angle-right" style="font-size:48px;color:red;float:right;cursor:pointer;"></i>
+
+    <h2 class="text-center">{{ pagination.items|first.getParent.filename|capitalize }}</h2> </br>
+  {% endif %}
+
+  <div class="row">
+    <div class="gallery">
+      {% if pagination.items is defined %}
+        {% for asset in pagination.items %}
+          <div class="gallery-item" style="display: flex; flex-direction: column;">
+            <div style="padding: 10px;">   
+              <a href="{{ asset.getFullPath() }}" data-lightbox="roadtrip" data-title="{{ asset.filename }}"> 
+                <img src="{{ asset.getFullPath() }}" alt="image">
+              </a>
+            </div>
+            <div><p>{{ asset.getParent.filename|upper }}, NEPAL, 2024</p></div>
+          </div>      
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+       <div class="pagination justify-content-center mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+</div>
+{# {% endif %} #}
+{# <script>
+  function goBack() {
+    window.history.back();  
+  }
+
+  function goNextGallery() {
+    const currentUrl = window.location.href;
+    const currentGalleryNumber = parseInt(currentUrl.split('/').pop()); 
+    
+    if (currentGalleryNumber < totalImages) {
+      const nextGalleryNumber = currentGalleryNumber + 1;  
+      window.location.href = `/gallery/${nextGalleryNumber}`;
+    } 
+    if (currentGalleryNumber >= totalImages) {
+      document.querySelector('.fa-angle-right').style.display = 'none'; 
+    }
+  }
+</script> #}
+
+{% endblock %}

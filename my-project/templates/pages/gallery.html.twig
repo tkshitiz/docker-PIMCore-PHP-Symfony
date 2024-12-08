@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div>
+    {{ pimcore_areablock('title-text', {'allowed': ['title-text']}) }}
+</div>
+ 
+<div id='content'>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="gallery">
+                {% for folder in pagination.items %}
+                    {% set images = folder.getChildren() %}
+                    {% set imageCount = 0 %}
+                    {% for image in images %}
+                        {% if image is instanceof('\\Pimcore\\Model\\Asset\\Image') %}
+                            {% set imageCount = imageCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if imageCount > 0 %}
+                        <div class="gallery-item" parent-id="{{ folder.id }}" folder-name="{{ folder.getFilename() }}">
+                            <a href="{{ path('gallery_album', { 'id': folder.id }) }}">
+                                {# Display the first image in the folder #}
+                                {% set filteredImages = images|filter(image => image is instanceof('\\Pimcore\\Model\\Asset\\Image')) %}
+
+                                {% if filteredImages|length > 0 %}
+                                    {{ filteredImages|first.getThumbnail("gallery").getHTML()|raw }}
+                                {% endif %}
+                                <div class="description" style="margin: auto;">
+                                    <h3 style="float:left;text-decoration:none !important;padding-left: 18px;">{{ folder.getFilename() }}</h3>
+                                    <h3 style="float:right;padding-right: 25px;">{{ imageCount }} photos</h3>
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="pagination justify-content-center mt-4">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

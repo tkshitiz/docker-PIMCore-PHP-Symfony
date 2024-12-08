@@ -1,0 +1,26 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    gallery:
+                        items:
+                            -
+                                method: resize
+                                arguments:
+                                    width: 600
+                                    height: 600
+                        medias: {  }
+                        name: gallery
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1723007286
+                        creationDate: 1723007232
+                        preserveAnimation: false

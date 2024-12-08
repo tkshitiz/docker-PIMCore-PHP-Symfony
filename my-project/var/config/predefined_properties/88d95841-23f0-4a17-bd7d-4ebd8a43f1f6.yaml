@@ -1,0 +1,15 @@
+pimcore:
+    properties:
+        predefined:
+            definitions:
+                88d95841-23f0-4a17-bd7d-4ebd8a43f1f6:
+                    name: header
+                    description: ''
+                    key: header
+                    type: document
+                    data: ''
+                    config: ''
+                    ctype: document
+                    inheritable: false
+                    creationDate: 1718703310
+                    modificationDate: 1718703474

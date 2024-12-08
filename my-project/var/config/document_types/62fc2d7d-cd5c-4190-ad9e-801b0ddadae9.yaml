@@ -1,0 +1,14 @@
+pimcore:
+    documents:
+        doc_types:
+            definitions:
+                62fc2d7d-cd5c-4190-ad9e-801b0ddadae9:
+                    name: 'Portal Engine - Portal Page'
+                    group: 'Portal Engine'
+                    controller: 'Pimcore\Bundle\PortalEngineBundle\Controller\PortalController::pageAction'
+                    template: null
+                    type: page
+                    priority: 0
+                    creationDate: 1715683015
+                    modificationDate: 1715683015
+                    staticGeneratorEnabled: false

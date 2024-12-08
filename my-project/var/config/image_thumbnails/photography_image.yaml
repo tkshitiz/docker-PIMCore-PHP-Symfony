@@ -1,0 +1,26 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    photography_image:
+                        items:
+                            -
+                                method: resize
+                                arguments:
+                                    width: 500
+                                    height: 500
+                        medias: {  }
+                        name: photography_image
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1721823981
+                        creationDate: 1719207910
+                        preserveAnimation: false

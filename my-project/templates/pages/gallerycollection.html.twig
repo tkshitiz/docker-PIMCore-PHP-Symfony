@@ -1,0 +1,27 @@
+<div class="container mt-5">
+     {% if parentFolderName is defined %}
+         <h2 class ="text-center">{{parentFolderName}}</h2> </br>
+        {% endif %}
+    <div class="row">
+        <div class="gallery">
+            {% if assets is defined %}
+                {% for asset in assets %}
+                <div class="gallery-item">
+                <a href="{{asset.getFullPath()}}" data-lightbox="roadtrip"><img src="{{asset.getFullPath()}}" alt=""></a>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="col text-center">
+        <button class="btn-load-more btn btn-outline-primary border border-black text-black py-2 px-4 rounded hover:bg-black hover:text-white transition-colors">Load More</button>
+    </div> 
+</div>
+
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+</div>
+
+

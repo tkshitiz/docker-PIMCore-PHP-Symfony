@@ -1,0 +1,14 @@
+pimcore:
+    documents:
+        doc_types:
+            definitions:
+                ea7b24ad-0547-451f-8d54-e4dc01a6ac6b:
+                    name: 'Portal Engine - Asset Data Pool'
+                    group: 'Portal Engine'
+                    controller: 'Pimcore\Bundle\PortalEngineBundle\Controller\DataPool\AssetController::listAction'
+                    template: null
+                    type: page
+                    priority: 0
+                    creationDate: 1715683016
+                    modificationDate: 1715683016
+                    staticGeneratorEnabled: false

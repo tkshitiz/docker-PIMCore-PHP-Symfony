@@ -1,0 +1,49 @@
+<header>
+	{% set menuRenderer = pimcore_nav_renderer('menu') %}
+	{% set navStartNode = document.getProperty('navigationRoot') %}
+
+	<nav class="navbar">
+		<div class="container-fluid">
+			<div class="logo"><a href ="/" style="padding:20px 70px;text-decoration: none;">Frank Mollers</div>				
+			<div style="display:flex; justify-content:flex-end;gap: 10px 20px;"> <a href="/"style="color:black;">Home</a>
+			{% set sideNav = pimcore_build_nav({active: document, root: navStartNode, htmlMenuPrefix: 'my-nav-'}) %}
+			{{ pimcore_render_nav(sideNav, 'menu', 'renderMenu', {
+				ulClass: 'nav-links',
+				expandSiblingNodesOfActiveBranch: true
+			}) }}
+
+	     {% do document.getProperty('navigation_exclude') %}
+
+			<div class="social-icon">
+	
+				<a href="#">
+					{% if editmode %}
+						{{pimcore_image("facebook_icon", {
+									    "title": "Drag your image here",
+									    "width": 50,
+									    "height": 50,
+									    "thumbnail": "facebook_icon"
+									}) }}
+					{% else %}
+						<img src="{{pimcore_image("facebook_icon").getSrc() }}" alt="{{pimcore_image("facebook_icon").getAlt() }}"/></a>
+				{% endif %}
+            
+				<a href="#">
+					{% if editmode %}
+						{{pimcore_image("instagram_icon", {
+									    "title": "Drag your image here",
+									    "width": 100,
+									    "height": 100,
+									    "thumbnail": "instagram_icon"
+									}) }}
+					{% else %}
+						<img src="{{pimcore_image("instagram_icon").getSrc() }}" alt="{{pimcore_image("instagram_icon").getAlt() }}"/></a>
+				{% endif %}
+			</div>
+			<div class="blog-link">
+				<a href="/blogs">Blog →</a>
+			</div>
+			</div>
+		</div>
+	</nav>
+</header>

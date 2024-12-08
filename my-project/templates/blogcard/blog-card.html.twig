@@ -1,0 +1,35 @@
+
+<div class="single_article">
+	<a href="{{ document.getUrl }}" class="single_article_img">
+		<img src="{{ document.editables.blog_banner.getThumbnail('blog_card_image') }}" alt="{{ document.editables.myHeadline.text }}" loading="lazy" class="img-fluid w-100">
+	</a>
+	<div class="single_article_text">
+		<ul class="post-details-inline">
+        <li>
+            {% if document.editables.author.text is defined %}
+                {{ document.editables.author.text }}
+            {% endif %}
+        </li>
+        <li class="separator">|</li> 
+     <li>
+    {% if document.editables.post_date.date is defined and document.editables.post_date.date is not same as null %}
+        {{ document.editables.post_date.date|date('M d, Y') }}  
+    {% else %}
+        {{ document.creationDate|date('M d, Y') }}  
+    {% endif %}
+</li>
+
+    </ul>
+		<a class="heading" href="{{ document.getUrl }}">
+			{{ document.editables.myHeadline.text }}
+		</a>
+		<p class="description">
+			{% if document.editables.brief_info.text is defined %}
+				{{ document.editables.brief_info.text }}
+			{% endif %}
+		</p>
+		<a class="view-details" href="{{ document.getUrl }}">
+			view details
+		</a>
+	</div>
+</div>

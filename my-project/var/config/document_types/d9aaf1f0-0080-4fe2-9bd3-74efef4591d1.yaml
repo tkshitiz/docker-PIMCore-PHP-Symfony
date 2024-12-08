@@ -1,0 +1,14 @@
+pimcore:
+    documents:
+        doc_types:
+            definitions:
+                d9aaf1f0-0080-4fe2-9bd3-74efef4591d1:
+                    name: 'Portal Engine - Data Pool Language Variant'
+                    group: 'Portal Engine'
+                    controller: 'Pimcore\Bundle\PortalEngineBundle\Controller\LanguageVariantController::dataPoolLanguageVariantAction'
+                    template: null
+                    type: page
+                    priority: 0
+                    creationDate: 1715683016
+                    modificationDate: 1715683016
+                    staticGeneratorEnabled: false
